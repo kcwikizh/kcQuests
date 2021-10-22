@@ -1,0 +1,4 @@
+
+[submodule "path_to_submodule"] 
+  path = githubpage/callofblood.github.io-master/callofblood.github.io-master
+  url = https://github.com/callofblood/kcQuests.git
