@@ -55,8 +55,13 @@ equit=json.loads(equit)
 
 
 
-
-
+def bonusTrim(bonus):
+	patternBonus=re.compile('\s*[\*|×]\s*')
+	rs=patternBonus.findall(bonus)
+	for i in rs:
+		bonus=bonus.replace(i,'*  ')
+	# ~ print(bonus)
+	return bonus
 for para in range(3):
 	print(para)
 	num=0
@@ -93,7 +98,6 @@ for para in range(3):
 				link=patternLink.findall(wikiContents[i])
 				
 				if link:
-					
 					for l in link:
 						wikiContents[i]=wikiContents[i].replace(l,' ')
 				parsed = wtp.parse(wikiContents[i])
@@ -115,15 +119,28 @@ for para in range(3):
 						if ('中文任务说明' in i):
 							desc=getValue(i)
 						if ('奖励' in i):
-							bonus=getValue(i)
+							tempbonus=getValue(i)
+							if(tempbonus):
+								nowbonus=tempbonus
+							# ~ if(num==1 and para==1):
+								# ~ print('this is bonus:'+nowbonus)
 						if ('备注' in i):
 							memo=getValue(i)
+							# ~ if(len(bonus)>0):
+								# ~ memo=memo+' 奖励:'+bonus
+							
+					
+							
 					temp={
 						"code":code,
 						"name":name,
 						"id":taskId,
-						"desc":desc+' '+memo+' 奖励:'+bonus,
+						"desc":desc,
+						"memo":memo,
+						"bonus":nowbonus
 					}
+					# ~ if(num==1 and para==1):
+						# ~ print('this is temp:'+str(temp))
 					taskId=''
 					dicts.append(temp)
 			wfile=open('../json/'+str(para)+'-'+str(num)+'.json','w+',encoding='utf-8')

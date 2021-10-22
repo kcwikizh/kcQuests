@@ -13,8 +13,6 @@ for para in range(3):
 		if(os.path.isfile('../json/'+str(para)+'-'+str(num)+'.json')):
 			f=open('../json/'+str(para)+'-'+str(num)+'.json','r',encoding='utf-8')
 			content=eval(f.read())
-			if (num==2 and para==25):
-				print(content)
 			strContent=json.dumps(content,sort_keys=True,ensure_ascii=False,indent=2)
 			newAllJson={}
 			jsonContent=json.loads(strContent)
@@ -27,10 +25,12 @@ for para in range(3):
 				return json.dumps(content,sort_keys=True,ensure_ascii=False,indent=2)
 			tongs=[-1 for i in range(2000)]
 			def tong(json):
-				for i in newAllJson:
+				for i in json:
 					tongs[int(i)]=0
 					idx=i
+					
 			tong(newAllJson)
+			
 			fout=open('../fineJson/'+str(para)+'-'+str(num)+'.json','w',encoding='utf-8')
 			fout.write('{\n')
 			rs=[]
