@@ -28,20 +28,14 @@ jobs:
           python ./py/allinone.py
           git config --global user.email 353783986@qq.com
           git config --global user.name callofblood
+          git add .
           # Do not proceed if there are no file differences
-          FILES_CHANGED=$(git diff-index --name-only HEAD | wc -l)
-          # DEBUG
-          echo DEBUG
-          git diff-index HEAD
-          git diff-index --name-only HEAD
-          git diff-index --name-only HEAD | wc
-          git diff-index --name-only HEAD | wc -l
-          echo $FILES_CHANGED
+          FILES_CHANGED=$(git diff-index --name-only --cached HEAD | wc -l)
           if [[ "$FILES_CHANGED" = "0" ]]; then
             echo "No file changes detected."
             exit 0
           fi
-          git commit -m "update" -a
+          git commit -m "update"
       - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
