@@ -31,8 +31,11 @@ jobs:
           # Do not proceed if there are no file differences
           FILES_CHANGED=$(git diff-index --name-only HEAD | wc -l)
           # DEBUG
-          git status
+          echo DEBUG
           git diff-index HEAD
+          git diff-index --name-only HEAD
+          git diff-index --name-only HEAD | wc
+          git diff-index --name-only HEAD | wc -l
           echo $FILES_CHANGED
           if [[ "$FILES_CHANGED" = "0" ]]; then
             echo "No file changes detected."
