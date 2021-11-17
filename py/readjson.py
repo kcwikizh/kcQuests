@@ -10,8 +10,8 @@ for para in range(3):
 	print(para)
 	while num!=100:
 		print(num)
-		if(os.path.isfile('../json/'+str(para)+'-'+str(num)+'.json')):
-			f=open('../json/'+str(para)+'-'+str(num)+'.json','r',encoding='utf-8')
+		if(os.path.isfile('./json/'+str(para)+'-'+str(num)+'.json')):
+			f=open('./json/'+str(para)+'-'+str(num)+'.json','r',encoding='utf-8')
 			content=eval(f.read())
 			strContent=json.dumps(content,sort_keys=True,ensure_ascii=False,indent=2)
 			newAllJson={}
@@ -31,7 +31,7 @@ for para in range(3):
 					
 			tong(newAllJson)
 			
-			fout=open('../fineJson/'+str(para)+'-'+str(num)+'.json','w',encoding='utf-8')
+			fout=open('./fineJson/'+str(para)+'-'+str(num)+'.json','w',encoding='utf-8')
 			fout.write('{\n')
 			rs=[]
 			for i in range(len(tongs)):
