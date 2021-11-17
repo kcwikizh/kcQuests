@@ -13,9 +13,9 @@ headers = {
 	
 for urlNo in range(len(url)):
 	r = requests.get(url[urlNo], headers=headers)    
-	file=open('../AllTasks.txt','w+',encoding='utf-8')#写入网页内所有内容
+	file=open('/AllTasks.txt','w+',encoding='utf-8')#写入网页内所有内容
 	file.write(str(r.text))
-	file=open('../AllTasks.txt','r',encoding='utf-8')
+	file=open('/AllTasks.txt','r',encoding='utf-8')
 	content=file.readlines()
 	
 	temp=''
@@ -34,5 +34,5 @@ for urlNo in range(len(url)):
 		temp=''
 		for k in range(start[j]+1,end[j]):
 			temp+=content[k]
-		file=open('./rs/'+str(urlNo)+'-'+(str(j)+'.txt'),'w',encoding='utf-8')#分段写入
+		file=open('/rs/'+str(urlNo)+'-'+(str(j)+'.txt'),'w',encoding='utf-8')#分段写入
 		file.write(temp)
