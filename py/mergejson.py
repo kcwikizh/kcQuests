@@ -21,5 +21,5 @@ rs=json.loads(rs)
 rs=json.dumps(rs,sort_keys=True,ensure_ascii=False,indent=2)	
 
 
-output=open('/dist/quests-scn.json','w+',encoding='utf-8')
+output=open('../quests-scn.json','w+',encoding='utf-8')
 output.write(str(rs))
