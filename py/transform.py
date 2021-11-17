@@ -47,9 +47,9 @@ headers = {
 	# ~ 'cookie':"_ga=GA1.2.1881705690.1629543107; VEE=wikitext; vector-nav-p-.E5.B8.B8.E7.94.A8.E9.80.9F.E6.9F.A5=true; vector-nav-p-.E5.87.BA.E5.87.BB.E6.B5.B7.E5.9F.9F=true; vector-nav-p-tb=true; vector-nav-p-.E5.8F.82.E4.B8.8E.E7.BC.96.E5.86.99kcwiki=true; vector-nav-p-.E6.B2.99.E7.9B.92=true; vector-nav-p-.E6.B8.B8.E6.88.8F.E6.96.87.E5.8C.96=true; vector-nav-p-kcwiki.E6.97.97.E4.B8.8B.E9.A1.B9.E7.9B.AE=true; vector-nav-p-.E9.81.93.E5.85.B7=true; vector-nav-p-.E5.85.A5.E6.B8.A0.E3.83.BB.E8.A1.A5.E7.BB.99=true; vector-nav-p-.E6.94.B9.E8.A3.85.E3.83.BB.E5.B7.A5.E5.8E.82=true; kcwiki_UserName=Callofblood; kcwiki_UserID=5277; kcwiki_Token=a696414057db9b77a8a4472b77eeaf90; _gid=GA1.2.1109110936.1631275946; kcwiki__session=1tin18vua2u0c4nmk9i511h50fbbsqm7; vector-nav-p-.E4.BB.BB.E5.8A.A1=true"
 	}  
 r = requests.get(equipUrl, headers=headers)    
-file=open('../equip.txt','w+',encoding='utf-8')
+file=open('./equip.txt','w+',encoding='utf-8')
 file.write(str(r.text))
-equitfile=open('../equip.txt',encoding='utf-8')
+equitfile=open('./equip.txt',encoding='utf-8')
 equit=equitfile.read()
 equit=json.loads(equit)
 
@@ -66,8 +66,8 @@ for para in range(3):
 	print(para)
 	num=0
 	while num!=100:
-		if(os.path.isfile('../rs/'+str(para)+'-'+str(num)+'.txt')):
-			file=open('../rs/'+str(para)+'-'+str(num)+'.txt','r+',encoding='utf-8')
+		if(os.path.isfile('./rs/'+str(para)+'-'+str(num)+'.txt')):
+			file=open('./rs/'+str(para)+'-'+str(num)+'.txt','r+',encoding='utf-8')
 			tasks=file.readlines()
 			l=len(tasks)
 			temp=''
@@ -143,7 +143,7 @@ for para in range(3):
 						# ~ print('this is temp:'+str(temp))
 					taskId=''
 					dicts.append(temp)
-			wfile=open('../json/'+str(para)+'-'+str(num)+'.json','w+',encoding='utf-8')
+			wfile=open('./json/'+str(para)+'-'+str(num)+'.json','w+',encoding='utf-8')
 			wfile.write('[')	
 			for i in range(len(dicts)):
 				if i!=len(dicts)-1:
@@ -153,10 +153,10 @@ for para in range(3):
 			wfile.write(']')
 			wfile.close()
 			print(para)
-			rfile=open('../json/'+str(para)+'-'+str(num)+'.json','r+',encoding='utf-8')
+			rfile=open('./json/'+str(para)+'-'+str(num)+'.json','r+',encoding='utf-8')
 			rcontent=rfile.read()
 			rcontent=rcontent.replace("'",'"')#将所有的'转换为"
-			wfile=open('../json/'+str(para)+'-'+str(num)+'.json','w+',encoding='utf-8')
+			wfile=open('./json/'+str(para)+'-'+str(num)+'.json','w+',encoding='utf-8')
 			wfile.write(rcontent)
 		num+=1
 # ~ 编号--code
