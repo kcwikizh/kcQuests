@@ -34,5 +34,5 @@ for urlNo in range(len(url)):
 		temp=''
 		for k in range(start[j]+1,end[j]):
 			temp+=content[k]
-		file=open('/rs/'+str(urlNo)+'-'+(str(j)+'.txt'),'w',encoding='utf-8')#分段写入
+		file=open('./rs/'+str(urlNo)+'-'+(str(j)+'.txt'),'w',encoding='utf-8')#分段写入
 		file.write(temp)
