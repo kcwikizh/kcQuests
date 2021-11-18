@@ -22,8 +22,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - run: |
-          git config --global user.email "353783986@qq.com"
-          git config --global user.name "callofblood"
           pip install requests
           pip install wikitextparser
           pip install bs4
@@ -31,7 +29,13 @@ jobs:
           git config --global user.email 353783986@qq.com
           git config --global user.name callofblood
           git add .
-          git commit -m "update" -a --allow-empty
+          # Do not proceed if there are no file differences
+          FILES_CHANGED=$(git diff-index --name-only --cached HEAD | wc -l)
+          if [[ "$FILES_CHANGED" = "0" ]]; then
+            echo "No file changes detected."
+            exit 0
+          fi
+          git commit -m "update"
       - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
