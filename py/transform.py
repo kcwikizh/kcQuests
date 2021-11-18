@@ -126,8 +126,8 @@ for para in range(3):
 								# ~ print('this is bonus:'+nowbonus)
 						if ('备注' in i):
 							memo=getValue(i)
-							# ~ if(len(bonus)>0):
-								# ~ memo=memo+' 奖励:'+bonus
+							if(len(nowbonus)>0):
+								memo=memo.strip()+' 奖励:'+nowbonus
 							
 					
 							
@@ -137,7 +137,7 @@ for para in range(3):
 						"id":taskId,
 						"desc":desc,
 						"memo":memo,
-						"bonus":nowbonus
+						
 					}
 					# ~ if(num==1 and para==1):
 						# ~ print('this is temp:'+str(temp))
