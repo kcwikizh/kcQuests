@@ -104,7 +104,9 @@ for para in range(3):
 				if(len(parsed.templates)>0):
 					content=parsed.templates[0].pformat()
 					content=content.split('\n')
-					patternId=re.compile('<!--(.+?)-->')			
+					patternId=re.compile('<!--(.+?)-->')	
+					patternPre=re.compile('^[A-Za-z0-9]{1,10}$')
+					pre=[]
 					for i in content:
 						Id=patternId.findall(i)
 						if (len(Id)>0):
@@ -128,7 +130,13 @@ for para in range(3):
 							memo=getValue(i)
 							if(len(nowbonus)>0):
 								memo=memo.strip()+' 奖励:'+nowbonus
-							
+						if('前置' in i):
+							# print(i)
+							p=getValue(i)
+							p=p.replace('<!--','')
+							p=patternPre.findall(p)
+							if(len(p)>0):
+								pre.append(p[0])
 					
 							
 					temp={
@@ -137,7 +145,8 @@ for para in range(3):
 						"id":taskId,
 						"desc":desc,
 						"memo":memo,
-						
+						"pre":pre
+
 					}
 					# ~ if(num==1 and para==1):
 						# ~ print('this is temp:'+str(temp))
