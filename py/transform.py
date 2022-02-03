@@ -124,12 +124,11 @@ for para in range(3):
 							tempbonus=getValue(i)
 							if(tempbonus):
 								nowbonus=tempbonus
-							# ~ if(num==1 and para==1):
-								# ~ print('this is bonus:'+nowbonus)
+							
 						if ('备注' in i):
 							memo=getValue(i)
-							if(len(nowbonus)>0):
-								memo=memo.strip()+' 奖励:'+nowbonus
+							if(memo):
+    								desc=desc+"\n❀"+memo
 						if('前置' in i):
 							# print(i)
 							p=getValue(i)
@@ -144,7 +143,7 @@ for para in range(3):
 						"name":name,
 						"id":taskId,
 						"desc":desc,
-						"memo":memo,
+						"memo":nowbonus,
 						"pre":pre
 
 					}
@@ -152,6 +151,12 @@ for para in range(3):
 						# ~ print('this is temp:'+str(temp))
 					taskId=''
 					dicts.append(temp)
+					code=""
+					name=""
+					taskId=""
+					desc=""
+					nowbonus=""
+					pre=""
 			wfile=open('./json/'+str(para)+'-'+str(num)+'.json','w+',encoding='utf-8')
 			wfile.write('[')	
 			for i in range(len(dicts)):
