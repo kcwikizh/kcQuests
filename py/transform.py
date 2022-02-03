@@ -123,7 +123,7 @@ for para in range(3):
 						if ('奖励' in i):
 							tempbonus=getValue(i)
 							if(tempbonus):
-								nowbonus=tempbonus
+								nowbonus="奖励:"+tempbonus
 							
 						if ('备注' in i):
 							memo=getValue(i)
