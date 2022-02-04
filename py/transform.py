@@ -128,7 +128,7 @@ for para in range(3):
 						if ('备注' in i):
 							memo=getValue(i)
 							if(memo):
-    								desc=desc+"\n❀"+memo
+    								desc=desc+"\n❀备注:"+memo
 						if('前置' in i):
 							# print(i)
 							p=getValue(i)
