@@ -107,6 +107,12 @@ for para in range(3):
 					patternId=re.compile('<!--(.+?)-->')	
 					patternPre=re.compile('^[A-Za-z0-9]{1,10}$')
 					pre=[]
+					taskId=""
+					code=""
+					name=""
+					taskId=""
+					desc=""
+					nowbonus=""
 					for i in content:
 						Id=patternId.findall(i)
 						if (len(Id)>0):
@@ -156,7 +162,7 @@ for para in range(3):
 					taskId=""
 					desc=""
 					nowbonus=""
-					pre=""
+					pre=[]
 			wfile=open('./json/'+str(para)+'-'+str(num)+'.json','w+',encoding='utf-8')
 			wfile.write('[')	
 			for i in range(len(dicts)):
