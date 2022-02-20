@@ -7,9 +7,9 @@ para=0
 
 for para in range(3):
 	num=0
-	print(para)
+	
 	while num!=100:
-		print(num)
+		print("readjson"+str(para)+'-'+str(num))
 		if(os.path.isfile('./json/'+str(para)+'-'+str(num)+'.json')):
 			f=open('./json/'+str(para)+'-'+str(num)+'.json','r',encoding='utf-8')
 			content=eval(f.read())
