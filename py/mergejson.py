@@ -35,9 +35,9 @@ new=2
 num=0
 newrs={}
 while(num!=100):
-	if(os.path.isfile('../fineJson/'+str(new)+'-'+str(num)+'.json')):
+	if(os.path.isfile('./fineJson/'+str(new)+'-'+str(num)+'.json')):
 		print("new"+str(num))
-		temp=open('../fineJson/'+str(new)+'-'+str(num)+'.json','r+',encoding='utf-8')
+		temp=open('./fineJson/'+str(new)+'-'+str(num)+'.json','r+',encoding='utf-8')
 		content=temp.read()
 		content=json.loads(content)
 		for i in content:
