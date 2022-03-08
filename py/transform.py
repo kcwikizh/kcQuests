@@ -113,6 +113,7 @@ for para in range(3):
 					taskId=""
 					desc=""
 					nowbonus=""
+					memo=""
 					for i in content:
 						Id=patternId.findall(i)
 						if (len(Id)>0):
@@ -133,8 +134,7 @@ for para in range(3):
 							
 						if ('备注' in i):
 							memo=getValue(i)
-							if(memo):
-    								desc=desc+"\n❀备注:"+memo
+							
 						if('前置' in i):
 							# print(i)
 							p=getValue(i)
@@ -150,6 +150,7 @@ for para in range(3):
 						"id":taskId,
 						"desc":desc,
 						"memo":nowbonus,
+						"memo2":memo,
 						"pre":pre
 
 					}
@@ -162,6 +163,7 @@ for para in range(3):
 					taskId=""
 					desc=""
 					nowbonus=""
+					memo=""
 					pre=[]
 			wfile=open('./json/'+str(para)+'-'+str(num)+'.json','w+',encoding='utf-8')
 			wfile.write('[')	
