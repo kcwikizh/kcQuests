@@ -121,6 +121,7 @@ for para in range(3):
 						if ('编号' in i):
 							code=getValue(i)
 							code=code.replace('<!--','')
+							print(code)
 						if ('中文任务名字' in i):
 							name=getValue(i)
 						if('|<!--' in i):
