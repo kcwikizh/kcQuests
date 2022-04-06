@@ -24,7 +24,8 @@ def getValue(arr):
 	arr=arr.replace("８",'8')
 	arr=arr.replace("９",'9')
 	arr=arr.replace("０",'0')
-	
+	arr=arr.replace('（','(')#处理括号
+	arr=arr.replace('）',')')
 	patternh5=re.compile('<.+?>')#处理h5标签
 	h5=patternh5.findall(arr)
 
@@ -38,7 +39,34 @@ def getValue(arr):
 			flag=1
 			return arr[idx+1:].strip()
 	return ''
-	
+
+
+def filterMap(desc):#处理地图名
+	patternPre=re.compile('「(.+?)\|(.+?)」\s*\((\d-\d)\)')
+	patternPre2=re.compile('「(.+?)\|(.+?)」')
+	patternPre3=re.compile('\[\[(.+?)\|(.+?)\]\]')
+	patternPre4=re.compile('(\d-\d)\|(.*)\((\d-\d)\)')
+	res=patternPre.findall(desc)
+	for i in res:
+		tmp='「'+i[0]+'|'+i[1]+'」'
+		
+		desc=desc.replace(tmp,'')
+		
+
+	res2=patternPre2.findall(desc)
+	for i in res2:
+		tmp='「'+i[0]+'|'+i[1]+'」'
+		desc=desc.replace(tmp,'('+i[0]+')')
+	res3=patternPre3.findall(desc)
+	for i in res3:
+		tmp='[['+i[0]+'|'+i[1]+']]'
+		desc=desc.replace(tmp,'('+i[0]+')')
+	res4=patternPre4.findall(desc)
+	for i in res4:
+		tmp=i[0]+'|'+i[1]
+		desc=desc.replace(tmp,'')
+	return desc
+
 	
 num=0
 equipUrl='http://kcwikizh.github.io/kcdata/slotitem/all.json'#读取装备数据
@@ -128,6 +156,7 @@ for para in range(3):
 							print(i)
 						if ('中文任务说明' in i):
 							desc=getValue(i)
+							desc=filterMap(desc)
 						if ('奖励' in i):
 							tempbonus=getValue(i)
 							if(tempbonus):
