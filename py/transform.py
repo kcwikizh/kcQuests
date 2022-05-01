@@ -41,37 +41,14 @@ def getValue(arr):
 	return ''
 
 
-def filterMap(desc):#处理地图名
-	patternPre=re.compile('「(.+?)\|(.+?)」\s*\((\d-\d)\)')
-	patternPre2=re.compile('「(.+?)\|(.+?)」')
-	patternPre3=re.compile('\[\[(.+?)\|(.+?)\]\]')
-	patternPre4=re.compile('(\d-\d)\|(.*)\((\d-\d)\)')
-	patternPre5=re.compile('(\d-\d)')
+def filterMap(desc):
+	patternPre=re.compile('([「]?\d-\d)\|(.*?)\((\d-\d)\)')
 	res=patternPre.findall(desc)
 	for i in res:
-		tmp='「'+i[0]+'|'+i[1]+'」'
-		
-		desc=desc.replace(tmp,'')
-		tmp2='('+i[2]+')'
-		desc=desc.replace(tmp2,i[2])
-
-	res2=patternPre2.findall(desc)
-	for i in res2:
-		tmp='「'+i[0]+'|'+i[1]+'」'
-		desc=desc.replace(tmp,i[0])
-	res3=patternPre3.findall(desc)
-	for i in res3:
-		tmp='[['+i[0]+'|'+i[1]+']]'
-		desc=desc.replace(tmp,i[0])
-	res4=patternPre4.findall(desc)
-	for i in res4:
 		tmp=i[0]+'|'+i[1]
 		desc=desc.replace(tmp,'')
 		tmp2='('+i[2]+')'
-		desc=desc.replace(tmp2,i[2])
-	res5=patternPre5.findall(desc)
-	for i in res5:
-		desc=desc.replace('('+i+')',i)
+		desc=desc.replace(tmp2,i[2]+' ')
 	return desc
 
 	
@@ -163,7 +140,9 @@ for para in range(3):
 							print(i)
 						if ('中文任务说明' in i):
 							desc=getValue(i)
+							print(desc)
 							desc=filterMap(desc)
+							print(desc)
 						if ('奖励' in i):
 							tempbonus=getValue(i)
 							if(tempbonus):
