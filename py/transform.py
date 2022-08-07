@@ -26,6 +26,10 @@ def getValue(arr):
 	arr=arr.replace("０",'0')
 	arr=arr.replace('（','(')#处理括号
 	arr=arr.replace('）',')')
+	
+	arr=arr.replace("red","")#处理wiki标签
+	arr=arr.replace("Red","")
+	
 	patternh5=re.compile('<.+?>')#处理h5标签
 	h5=patternh5.findall(arr)
 
