@@ -1,10 +1,13 @@
+import os.path
+
 import requests
 
-url = ['https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1&action=raw',
-       'https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1/%E6%9C%9F%E9%97%B4%E9%99%90%E5%AE%9A%E4%BB%BB%E5%8A%A1'
-       '&action=raw',
-       'https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1/%E6%9C%80%E6%96%B0%E4%BB%BB%E5%8A%A1&action=raw',
-       ]  # 三个需要抓取的网站
+__dir__ = os.path.dirname(__file__)
+urls = ['https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1&action=raw',
+        'https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1/%E6%9C%9F%E9%97%B4%E9%99%90%E5%AE%9A%E4%BB%BB%E5%8A%A1'
+        '&action=raw',
+        'https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1/%E6%9C%80%E6%96%B0%E4%BB%BB%E5%8A%A1&action=raw',
+        ]  # 三个需要抓取的网站
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                   'Chrome/88.0.4324.104 Safari/537.36',
@@ -19,28 +22,25 @@ headers = {
               "kcwiki__session=1tin18vua2u0c4nmk9i511h50fbbsqm7; vector-nav-p-.E4.BB.BB.E5.8A.A1=true "
 }
 
-for urlNo in range(len(url)):
-    r = requests.get(url[urlNo], headers=headers)
-    file = open('./AllTasks.txt', 'w+', encoding='utf-8')  # 写入网页内所有内容
-    file.write(str(r.text))
-    file = open('./AllTasks.txt', 'r', encoding='utf-8')
-    content = file.readlines()
 
-    temp = ''
-    start = []
-    end = []
+def save(text, index):
+    pages = text.split('页首}}\n')
+    for page_index, page in enumerate(pages[1:]):
+        with open('{}/../rs/{}-{}.txt'.format(__dir__, index, page_index), 'w', encoding='utf-8') as f:
+            f.write(page.split('{{页尾')[0])
 
-    for i in range(len(content)):  # 记录每段开头结尾
-        if '页首' in content[i]:
-            start.append(i)
-        if '页尾' in content[i]:
-            end.append(i)
 
-    print(start, end)
+def run():
+    session = requests.Session()
+    session.headers = headers
+    print(__dir__)
+    for index, url in enumerate(urls):
+        result = session.get(url)
+        # with open('{}/../AllTasks.txt'.format(__dir__), 'w+', encoding='utf-8') as f:
+        #     f.write(result.text)
+        save(result.text, index)
 
-    for j in range(len(start)):
-        temp = ''
-        for k in range(start[j] + 1, end[j]):
-            temp += content[k]
-        file = open('./rs/' + str(urlNo) + '-' + (str(j) + '.txt'), 'w', encoding='utf-8')  # 分段写入
-        file.write(temp)
+
+if __name__ == '__main__':
+    print(os.path.dirname(__file__))
+    # run()
