@@ -32,6 +32,8 @@ def getValue(arr):
 
     arr = arr.replace("red", "")  # 处理wiki标签
     arr = arr.replace("Red", "")
+    arr = arr.replace('green', '')
+    arr = arr.replace('Green', '')
 
     patternh5 = re.compile('<.+?>')  # 处理h5标签
     h5 = patternh5.findall(arr)
@@ -71,6 +73,7 @@ file.write(str(r.text))
 equitfile = open('./equip.txt', encoding='utf-8')
 equit = equitfile.read()
 equit = json.loads(equit)
+exception_string = {'|★': '★'}
 
 
 def bonusTrim(bonus):
@@ -120,6 +123,9 @@ for para in range(3):
                 if link:
                     for l in link:
                         wikiContents[i] = wikiContents[i].replace(l, ' ')
+                for string in exception_string.keys():
+                    if string in wikiContents[i]:
+                        wikiContents[i] = wikiContents[i].replace(string, exception_string[string])
                 parsed = wtp.parse(wikiContents[i])
                 if (len(parsed.templates) > 0):
                     content = parsed.templates[0].pformat()
