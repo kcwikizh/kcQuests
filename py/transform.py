@@ -172,7 +172,8 @@ for para in range(3):
                             p = patternPre.findall(p)
                             if (len(p) > 0):
                                 pre.append(p[0])
-
+                        if ('覆盖' in i):
+                            cover = getValue(i)
                     temp = {
                         "code": code,
                         "name": name,
@@ -180,8 +181,8 @@ for para in range(3):
                         "desc": desc,
                         "memo": nowbonus,
                         "memo2": memo,
-                        "pre": pre
-
+                        "pre": pre,
+                        "cover": cover
                     }
                     # ~ if(num==1 and para==1):
                     # ~ print('this is temp:'+str(temp))
@@ -193,6 +194,7 @@ for para in range(3):
                     desc = ""
                     nowbonus = ""
                     memo = ""
+                    cover = ""
                     pre = []
             wfile = open('./json/' + str(para) + '-' + str(num) + '.json', 'w+', encoding='utf-8')
             wfile.write('[')
