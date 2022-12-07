@@ -6,7 +6,7 @@ __dir__ = os.path.dirname(__file__)
 urls = ['https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1&action=raw',
         'https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1/%E6%9C%9F%E9%97%B4%E9%99%90%E5%AE%9A%E4%BB%BB%E5%8A%A1'
         '&action=raw',
-        'https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1/%E6%9C%80%E6%96%B0%E4%BB%BB%E5%8A%A1&action=raw',
+        #'https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1/%E6%9C%80%E6%96%B0%E4%BB%BB%E5%8A%A1&action=raw',
         ]  # 三个需要抓取的网站
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
