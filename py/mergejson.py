@@ -30,7 +30,7 @@ output.write(str(rs))
 # 单独生成最新
 
 
-new = 2
+new = 1
 num = 0
 newrs = {}
 while num != 100:
