@@ -27,28 +27,12 @@ for para in range(3):
                 return json.dumps(content, sort_keys=True, ensure_ascii=False, indent=2)
 
 
-            tongs = [-1 for i in range(2000)]
+           
 
 
-            def tong(json):
-                for i in json:
-                    tongs[int(i)] = 0
-                    idx = i
-
-
-            tong(newAllJson)
+            
 
             fout = open('./fineJson/' + str(para) + '-' + str(num) + '.json', 'w', encoding='utf-8')
-            fout.write('{\n')
-            rs = []
-            for i in range(len(tongs)):
-                if tongs[i] == 0:
-                    rs.append(i)
-            for j in range(len(rs)):
-                fout.write('"' + str(rs[j]) + '":')
-                if j != len(rs) - 1:
-                    fout.write(toJson(newAllJson[str(rs[j])]) + ',\n')
-                else:
-                    fout.write(toJson(newAllJson[str(rs[j])]) + '\n')
-            fout.write('}')
+            newAllJson=str(newAllJson).replace("'",'"')
+            fout.write(str(newAllJson))
         num += 1
