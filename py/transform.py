@@ -156,7 +156,6 @@ for para in range(3):
                             desc = getValue(i)
                             print(desc)
                             desc = filterMap(desc)
-                            print(desc)
                         if ('奖励' in i):
                             tempbonus = getValue(i)
                             if (tempbonus):
