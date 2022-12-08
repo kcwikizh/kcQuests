@@ -25,7 +25,7 @@ headers = {
 def save(text, index):
     pages = text.split('页首}}\n')
     for page_index, page in enumerate(pages[1:]):
-        with open('/rs/{}-{}.txt'.format(index, page_index), 'w', encoding='utf-8') as f:
+        with open('{}/rs/{}-{}.txt'.format(os.path.dirname(__dir__),index, page_index), 'w', encoding='utf-8') as f:
             f.write(page.split('{{页尾')[0])
 
 
