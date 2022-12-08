@@ -25,7 +25,7 @@ headers = {
 def save(text, index):
     pages = text.split('页首}}\n')
     for page_index, page in enumerate(pages[1:]):
-        with open('{}/../rs/{}-{}.txt'.format(__dir__, index, page_index), 'w', encoding='utf-8') as f:
+        with open('{}/./rs/{}-{}.txt'.format(__dir__, index, page_index), 'w', encoding='utf-8') as f:
             f.write(page.split('{{页尾')[0])
 
 
@@ -35,7 +35,7 @@ def run():
     print(__dir__)
     for index, url in enumerate(urls):
         result = session.get(url)
-        # with open('{}/../AllTasks.txt'.format(__dir__), 'w+', encoding='utf-8') as f:
+        # with open('{}/./AllTasks.txt'.format(__dir__), 'w+', encoding='utf-8') as f:
         #     f.write(result.text)
         save(result.text, index)
 
