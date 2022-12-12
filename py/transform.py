@@ -7,13 +7,12 @@ import wikitextparser as wtp
 
 
 def getValue(arr):
-    arr = arr.replace("}}", ' ')  # 处理wiki格式
+    arr = arr.replace("{{", ' ')
+    arr = arr.replace("}}", '')  # 处理wiki格式
     arr = arr.replace('"', '')
     arr = arr.replace('‘', '')
     arr = arr.replace('’', '')
     arr = arr.replace("'", '')
-    arr = arr.replace("{", '')
-    arr = arr.replace("}", '')
     arr = arr.replace("[[", '')
     arr = arr.replace("]]", '')
 
