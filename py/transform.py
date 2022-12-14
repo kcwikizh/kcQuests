@@ -45,6 +45,8 @@ def getValue(arr):
     arr = arr.replace("： ","：")
     
     flag = 0
+    if arr[-1]=="," or arr[-1]=="，":
+        arr=arr[:-1]+"。"
     for i in range(len(arr)):
         if arr[i] == '=' and flag == 0:  # 获取'='后的字符串
             idx = i
