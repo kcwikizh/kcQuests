@@ -40,7 +40,10 @@ def getValue(arr):
     for i in range(len(h5)):
         arr = arr.replace(h5[i], ',')
         
-    arr = arr.replace("：,","：")
+    arr = arr.replace("：,","：") 
+    arr = arr.replace(":,","：")
+    arr = arr.replace("： ","：")
+    
     flag = 0
     for i in range(len(arr)):
         if arr[i] == '=' and flag == 0:  # 获取'='后的字符串
