@@ -7,7 +7,7 @@ import wikitextparser as wtp
 
 
 def getValue(arr):
-    arr = arr.replace("{{", ' ')
+    arr = arr.replace("{{", '')
     arr = arr.replace("}}", '')  # 处理wiki格式
     arr = arr.replace('"', '')
     arr = arr.replace('‘', '')
@@ -38,8 +38,9 @@ def getValue(arr):
     h5 = patternh5.findall(arr)
 
     for i in range(len(h5)):
-        arr = arr.replace(h5[i], '')
-
+        arr = arr.replace(h5[i], ',')
+        
+    arr = arr.replace("：,","：")
     flag = 0
     for i in range(len(arr)):
         if arr[i] == '=' and flag == 0:  # 获取'='后的字符串
