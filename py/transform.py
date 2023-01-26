@@ -186,7 +186,7 @@ for para in range(3):
                         "memo": nowbonus,
                         "memo2": memo,
                         "pre": pre,
-                        "cover": "cover"
+                      #  "cover": "cover"
                     }
                     # ~ if(num==1 and para==1):
                     # ~ print('this is temp:'+str(temp))
