@@ -33,7 +33,7 @@ def getValue(arr):
     arr = arr.replace("Red", "")
     arr = arr.replace('green', '')
     arr = arr.replace('Green', '')
-
+    arr = arr.replace('color', '')
     patternh5 = re.compile('<.+?>')  # 处理h5标签
     h5 = patternh5.findall(arr)
 
