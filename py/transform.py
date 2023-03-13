@@ -116,6 +116,8 @@ for para in range(3):
                         # ~ print(j)
                         left = j.split('|')[0]
                         right = j.split('|')[1]
+                        if(left.lower()=="red"):
+                            wikiContents[i] = wikiContents[i].replace(left+"|"+right ,right)
                         patternNum = re.compile('编号(.+?)(\d+)')
                         Num = re.match(patternNum, right)
                         if Num:
