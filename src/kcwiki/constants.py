@@ -2,14 +2,16 @@ FILTERS = [("<br/>\n", "<br/> ")]
 
 BEFORE_PARSE_FILTERS = [(r"<\s*\/?\s*\w+\s*[^>]*>", "")]
 
-WT_FILTERS = [(r"'''", " "), (r"\{\{", " "), (r"\}\}", " "), (r"\[\[", " "), (r"\]\]", " ")]
+WT_FILTERS = [(r"'''", " "), (r"\{\{", " "), (r"\}\}", " "), (r"\[\[", " "), (r"\]\]", " "), (r"[Gg]reen\|", ""),
+              (r"[Rr]ed\|", ""), ('color', '')]
 
 URL_LIST = ['https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1&action=raw',
             # 'https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1/%E6%9C%9F%E9%97%B4%E9%99%90%E5%AE%9A%E4%BB%BB%E5%8A%A1&action=raw',
             'https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1/%E6%9C%80%E6%96%B0%E4%BB%BB%E5%8A%A1&action=raw',
             ]  # 三个需要抓取的网站
 HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                  'Chrome/88.0.4324.104 Safari/537.36',
     'cookie': "_ga=GA1.2.1881705690.1629543107; VEE=wikitext; vector-nav-p-.E5.B8.B8.E7.94.A8.E9.80.9F.E6.9F.A5=true; "
               "vector-nav-p-.E5.87.BA.E5.87.BB.E6.B5.B7.E5.9F.9F=true; vector-nav-p-tb=true; "
               "vector-nav-p-.E5.8F.82.E4.B8.8E.E7.BC.96.E5.86.99kcwiki=true; vector-nav-p-.E6.B2.99.E7.9B.92=true; "

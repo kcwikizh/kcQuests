@@ -23,7 +23,7 @@ def run(output):
         quests = Quests()
         quests.set_output(output)
         quests.query_raw_text()
-        if args.download:
+        if args.download == 1:
             quests.query_solt_items()
         else:
             quests.load_solt_items()
