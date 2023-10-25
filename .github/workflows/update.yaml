@@ -43,12 +43,12 @@ jobs:
         cp quests-scn-new.json dist/quests-scn-new.json
     # Runs a set of commands using the runners shell
     - name: Commit changes
-      uses: EndBug/add-and-commit@v4
+      uses: EndBug/add-and-commit@v9
       with:
         author_name: GitHub Actions Bot
         author_email: <>
         message: "GitHub Actions Refresh"
-        add: "*.json rc/*.txt"
+        add: "."
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
