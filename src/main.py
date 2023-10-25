@@ -3,7 +3,7 @@ import sys
 
 import argparse
 
-from kcwiki.quests import Quests
+from kcwiki import Quests
 
 
 def run(output):

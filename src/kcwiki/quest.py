@@ -23,6 +23,18 @@ class Quest:
     def to_json(self):
         return json.dumps(self.__dict__, ensure_ascii=False)
 
+    def to_dict(self):
+        return {
+            self.id: self.__dict__
+        }
+
+    def to_dict_without_id(self):
+        return {
+            self.id: {
+                i: self.__dict__[i] for i in self.__dict__.keys() if i != 'id'
+            }
+        }
+
     @classmethod
     def from_json(cls, json_data):
         data = json.loads(json_data)

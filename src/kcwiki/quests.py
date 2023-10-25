@@ -63,7 +63,10 @@ class Quests:
 
     def save_json_kcq(self):
         for key in self.quest_map.keys():
-            content = json.dumps([item.__dict__ for item in self.quest_map[key]], sort_keys=True, ensure_ascii=False, indent=2)
+            d = {}
+            for quest in self.quest_map[key]:
+                d.update(quest.to_dict_without_id())
+            content = json.dumps(d, sort_keys=True, ensure_ascii=False, indent=2)
             filename = os.path.join(self.output, 'quests-scn.json')
             if key == 1:
                 filename = os.path.join(self.output, 'quests-scn-new.json')
