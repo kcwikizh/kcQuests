@@ -1,7 +1,7 @@
 import json
 
-from .constants import WT_FILTERS
-from .helper import filter_text
+from src.kcwiki.constants import WT_FILTERS
+from src.kcwiki.helper import filter_text
 
 
 class Quest:

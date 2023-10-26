@@ -5,9 +5,9 @@ import re
 import requests
 import wikitextparser as wtp
 
-from .constants import HEADERS, URL_LIST, BEFORE_PARSE_FILTERS, SLOT_ITEM_URL
-from .helper import filter_text
-from .quest import Quest
+from src.kcwiki.helper import filter_text
+from src.kcwiki.quest import Quest
+from src.kcwiki.constants import BEFORE_PARSE_FILTERS, URL_LIST, SLOT_ITEM_URL, HEADERS
 
 
 class Quests:
@@ -27,14 +27,14 @@ class Quests:
             f.write(result.text)
         items = json.loads(result.text)
         for item in items:
-            self.slot_items[item["id"]] = item["name"]
+            self.slot_items[item["id"]] = item["chinese_name"] if item["chinese_name"] is not None else item["name"]
 
     def load_solt_items(self):
         with open(os.path.join(self.output, 'equip.json')) as f:
             result = f.read()
             items = json.loads(result)
             for item in items:
-                self.slot_items[item["id"]] = item["name"]
+                self.slot_items[item["id"]] = item["chinese_name"] if item["chinese_name"] is not None else item["name"]
 
     def set_output(self, path):
         self.output = path

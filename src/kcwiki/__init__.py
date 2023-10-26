@@ -1,1 +1,1 @@
-from .quests import Quests
+from src.kcwiki.quests import Quests
