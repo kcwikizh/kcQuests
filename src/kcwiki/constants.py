@@ -1,9 +1,9 @@
 FILTERS = [("<br/>\n", "<br/> ")]
 
-BEFORE_PARSE_FILTERS = [(r"<\s*\/?\s*\w+\s*[^>]*>", "")]
+BEFORE_PARSE_FILTERS = [(r"<\s*\/?\s*\w+\s*[^>]*>", " ")]
 
-WT_FILTERS = [(r"'''", " "), (r"\{\{", " "), (r"\}\}", " "), (r"\[\[", " "), (r"\]\]", " "), (r"[Gg]reen\|", ""),
-              (r"[Rr]ed\|", ""), ('color', '')]
+WT_FILTERS = [(r"'''", ""), (r"\{\{", ""), (r"\}\}", ""), (r"\[\[", "「"), (r"\]\]", "」"), (r"[Gg]reen\|", ""),
+              (r"[Rr]ed\|", ""), (r'color\|', ''), (r'[x*](?=\d)', r'×'), ('「「', '「'), ('」」', '」')]
 
 URL_LIST = ['https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1&action=raw',
             # 'https://zh.kcwiki.cn/index.php?title=%E4%BB%BB%E5%8A%A1/%E6%9C%9F%E9%97%B4%E9%99%90%E5%AE%9A%E4%BB%BB%E5%8A%A1&action=raw',
