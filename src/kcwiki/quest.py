@@ -49,7 +49,7 @@ class Quest:
             value = arg.value.strip()
             if name == '编号':
                 quest.code = value
-            if name.startswith('前置') and value:
+            if '前置' in name and value:
                 quest.pre.append(value)
             if name == '中文任务名字':
                 quest.name = filter_text(value, WT_FILTERS)
