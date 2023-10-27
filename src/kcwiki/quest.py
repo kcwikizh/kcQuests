@@ -31,7 +31,7 @@ class Quest:
     def to_dict_without_id(self):
         return {
             self.id: {
-                i: self.__dict__[i] for i in self.__dict__.keys() if i != 'id'
+                i: self.__dict__[i] if i != 'memo' else f'奖励:{self.__dict__[i]}' for i in self.__dict__.keys() if i != 'id'
             }
         }
 
