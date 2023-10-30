@@ -6,7 +6,7 @@ from src.kcwiki.helper import filter_text
 
 class Quest:
 
-    def __init__(self, name=None, id=None, code=None, memo=None, memo2=None, desc=None, pre=None):
+    def __init__(self, name=None, id=None, code=None, memo="", memo2="", desc="", pre=None):
         if pre is None:
             pre = []
         self.name = name
