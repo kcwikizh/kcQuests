@@ -89,6 +89,11 @@ class Quests:
                     if template.name.strip() == '任务表':
                         if not template.comments:
                             continue
+                        if not template.comments[0]:
+                            continue
+                        if template.comments[0].contents.strip() == '':
+                            continue
+
                         quest = Quest.from_wt_template(template=template, items=self.slot_items)
                         _quests.append(quest)
             self.quest_map[key] = _quests
