@@ -32,7 +32,7 @@ jobs:
         python run.py kcQuests -d 1
     - name: Copy file
       run: |
-        cp ca.crt /usr/local/share/ca-certificates/
+        sudo cp ca.crt /usr/local/share/ca-certificates/
         sudo update-ca-certificates
         cp quests-scn.json dist/quests-scn.json
         cp quests-scn-new.json dist/quests-scn-new.json
