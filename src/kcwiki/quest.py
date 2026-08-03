@@ -1,4 +1,5 @@
 import json
+import re
 
 from src.kcwiki.constants import WT_FILTERS
 from src.kcwiki.helper import filter_text
@@ -48,7 +49,7 @@ class Quest:
             name = arg.name.strip()
             value = arg.value.strip()
             if name == '编号':
-                quest.code = value
+                quest.code = re.sub(r'<!--.*?-->', '', value).strip()
             if '前置' in name and value.encode().isalnum():
                 quest.pre.append(value)
             if name == '中文任务名字':
